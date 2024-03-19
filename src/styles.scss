@@ -1,1 +1,26 @@
-/* You can add global styles to this file, and also import other style files */
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+$fontsize: 12px;
+$adjustment: 0.3vh;
+html {
+  font-size: $fontsize; /* Tamaño base */
+}
+
+@media screen and (min-height: 750px) {
+  html {
+    font-size: calc(
+      $fontsize + $adjustment
+    ); /* Ajusta el tamaño en función de la altura */
+  }
+}
+body {
+  margin: 0;
+  font-family: "Google Sans", "sans-serif";
+}
+
+* {
+  letter-spacing: 0.1px !important;
+}

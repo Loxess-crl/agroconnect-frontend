@@ -1,0 +1,27 @@
+<div class="body">
+  <div class="header">
+    <h2>{{ title }}</h2>
+    <button
+      mat-icon-button
+      matTooltip="Cerrar"
+      (click)="onConfirmar()"
+      aria-label="Cerrar"
+      [mat-dialog-close]="false"
+    >
+      <mat-icon svgIcon="close">close</mat-icon>
+    </button>
+  </div>
+  <div class="text" mat-dialog-content>
+    <p>{{ message }}</p>
+  </div>
+  <div class="acciones" mat-dialog-actions>
+    <button
+      mat-button
+      color="warn"
+      (click)="onConfirmar()"
+      [mat-dialog-close]="false"
+    >
+      Aceptar
+    </button>
+  </div>
+</div>

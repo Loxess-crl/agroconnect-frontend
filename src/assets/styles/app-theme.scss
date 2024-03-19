@@ -1,0 +1,73 @@
+@use "@angular/material" as mat;
+@use "app-colors.scss" as ac;
+
+@import url("../fonts/Google-Sans.css");
+@include mat.core();
+
+//Typography
+$app-typography: mat.define-typography-config(
+  $font-family: "Google Sans, sans-serif",
+);
+
+// Primary
+$app-primary: (
+  main: ac.$primary-color,
+  lighter: #e2f4fd,
+  darker: #205391,
+  200: #86d1f7,
+  // For slide toggle,
+  contrast:
+    (
+      main: ac.$on-primary-color,
+      lighter: ac.$on-primary-color,
+      darker: ac.$on-primary-color,
+    ),
+);
+$app-theme-primary: mat.define-palette($app-primary, main, lighter, darker);
+
+// Accent
+$app-accent: (
+  main: ac.$accent-color,
+  lighter: #dff4fa,
+  darker: #00515b,
+  200: #afe4f1,
+  // For slide toggle,
+  contrast:
+    (
+      main: ac.$on-accent-color,
+      lighter: ac.$on-accent-color,
+      darker: ac.$on-accent-color,
+    ),
+);
+$app-theme-accent: mat.define-palette($app-accent, main, lighter, darker);
+
+// Warning
+$app-warn: (
+  main: ac.$warn-color,
+  lighter: #e57373,
+  darker: #b71c1c,
+  200: #ef9a9a,
+  // For slide toggle,
+  contrast:
+    (
+      main: ac.$on-warn-color,
+      lighter: ac.$on-warn-color,
+      darker: ac.$on-warn-color,
+    ),
+);
+$app-theme-warn: mat.define-palette($app-warn, main, lighter, darker);
+
+// Generate the theme:
+$app-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $app-theme-primary,
+      accent: $app-theme-accent,
+      warn: $app-theme-warn,
+    ),
+    typography: $app-typography,
+    density: 0,
+  )
+);
+
+@include mat.all-component-themes($app-theme);

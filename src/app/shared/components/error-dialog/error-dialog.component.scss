@@ -1,0 +1,55 @@
+@use "@angular/material" as mat;
+@use "../../../../assets/styles/app-palettes.scss" as ap;
+
+.body {
+  width: fit-content;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #dee2e6;
+    padding-inline: 24px;
+    padding-block: 12px;
+
+    h2 {
+      margin: 0;
+      font-weight: normal;
+      color: #000000de;
+    }
+  }
+
+  .text {
+    padding-inline: 24px;
+
+    h1 {
+      padding-inline: 0px;
+      text-align: center;
+    }
+
+    p {
+      padding-inline: 0px;
+    }
+  }
+
+  .acciones {
+    border-top: 1px solid #dee2e6;
+    display: flex;
+    padding-inline: 24px;
+    padding-block: 12px;
+    gap: 8px;
+    justify-content: flex-end;
+
+    button {
+      height: 40px !important;
+      padding-inline: 24px;
+      border-radius: 20px;
+    }
+  }
+}
+
+@media (max-width: 760px) {
+  .body {
+    width: 80vw;
+  }
+}
