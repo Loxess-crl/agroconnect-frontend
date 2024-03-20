@@ -1,28 +1,45 @@
 @use "../../../assets/styles/app-colors.scss" as ac;
+@use "../../../assets/styles/app-palettes.scss" as ap;
 .content {
   height: 100%;
   width: 100%;
-  background: ac.$primary-color;
-  background: linear-gradient(
-    137deg,
-    ac.$primary-color 0%,
-    ac.$primary-dark-color 100%
-  );
+  background: map-get(ap.$accent-palette, 100);
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  text-align: center;
+  animation: fadeIn 1s ease-in-out backwards;
 
-  .forms {
+  .header-text {
+    margin-top: 18vh;
+    .title {
+      font-size: 3.5rem;
+      font-weight: bold;
+      color: ac.$primary-color;
+    }
+    p {
+      padding-inline: 2rem;
+      font-size: 1.25rem;
+      color: map-get(ap.$primary-palette, 400);
+    }
+  }
+
+  .options {
+    margin-top: 5vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 90%;
-    height: 92%;
-    border-radius: 10px;
-    background: ac.$background-color 80%;
-    box-shadow: 0 0 10px 0 #242424;
-    animation: fadeIn 1.5s ease-in-out backwards;
+    gap: 1rem;
+    a {
+      text-decoration: none;
+      color: map-get(ap.$primary-palette, 500);
+      font-size: 1.25rem;
+      font-weight: bold;
+      transition: color 0.3s ease-in-out;
+      &:hover {
+        color: ac.$primary-color;
+      }
+    }
   }
 }
 

@@ -18,7 +18,7 @@ export class HomeComponent {
     this.nextPage = true;
 
     setTimeout(() => {
-      this.router.navigate([APP_ROUTES.AUTH, APP_ROUTES.LOGIN]);
+      this.router.navigate([APP_ROUTES.AUTH]);
     }, 1000);
   }
 }

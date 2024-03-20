@@ -1,6 +1,19 @@
 <div class="content">
-  <div class="forms">
-    <h3>NO SÉ CÓMO ESITLARLO AQUÍ XD</h3>
-    <router-outlet />
+  <div class="header-text">
+    <span class="title">Te damos la bienvenida</span>
+    <p>
+      Únete a nuestra comunidad agrícola hoy y lleva tu experiencia de compra al
+      siguiente nivel
+    </p>
   </div>
+
+  <div class="options">
+    <a [routerLink]="['/auth/login']" routerLinkActive="active"
+      >Iniciar sesión</a
+    >
+    <a [routerLink]="['/auth/register']" routerLinkActive="active"
+      >Registrarse</a
+    >
+  </div>
+  <router-outlet></router-outlet>
 </div>

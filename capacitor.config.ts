@@ -5,7 +5,7 @@ const config: CapacitorConfig = {
   appName: 'agroconnect',
   webDir: 'dist/agroconnect-frontend/browser',
   server: {
-    androidScheme: 'https',
+    androidScheme: 'http',
   },
 };
 
