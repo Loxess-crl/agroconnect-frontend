@@ -1,1 +1,34 @@
-<p>home works!</p>
+<div class="content">
+  <video autoplay muted loop class="video-background">
+    <source
+      src="../../../assets/videos/video-background.mp4"
+      type="video/mp4"
+    />
+  </video>
+  <div class="head">
+    <img src="../../../assets/imgs/agroconnect-icon.png" alt="icon" />
+    <h1>AGROCONNECT</h1>
+  </div>
+  <div class="body">
+    <main>
+      <p>
+        Bienvenido a Agroconnect, tu conexión directa con los productos
+        agrícolas más frescos. Simplificamos la búsqueda y compra de productos
+        de calidad, directamente de los agricultores.
+      </p>
+      <p>
+        <strong>
+          Únete hoy y descubre una nueva forma de abastecer tu negocio agrícola.
+        </strong>
+      </p>
+    </main>
+
+    <div class="button-next">
+      <button (click)="onClickNext()">Continuar</button>
+    </div>
+    @if(nextPage){
+
+    <div class="back-animate"></div>
+    }
+  </div>
+</div>
