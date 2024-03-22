@@ -1,7 +1,41 @@
 @use "../../../../assets/styles/app-colors.scss" as ac;
-form {
-  mat-form-field {
-    width: 100%;
-    margin: 10px 0;
+@use "../../../../assets/styles/app-palettes.scss" as ap;
+.login {
+  text-align: start;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 100vw;
+  background-color: map-get(ap.$primary-palette, 100);
+  z-index: 2;
+  animation: fromRight 0.5s ease-in-out backwards;
+  form {
+    padding: 1rem;
+    mat-form-field {
+      width: 100%;
+    }
+  }
+}
+
+.back-animation {
+  animation: toRight 0.5s ease-in-out backwards;
+}
+
+@keyframes fromRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes toRight {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
   }
 }

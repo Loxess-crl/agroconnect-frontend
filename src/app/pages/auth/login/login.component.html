@@ -1,49 +1,57 @@
-<form>
-  <mat-form-field color="primary" appearance="outline">
-    <mat-label>Email</mat-label>
-    <input
-      placeholder="Email"
-      type="email"
-      formControlName="email"
-      name="email"
-      matInput
-      required
-    />
-    <mat-error>
-      {{ loginForm.get("email")?.errors | validatorErrorMessage }}
-    </mat-error>
-  </mat-form-field>
-
-  <mat-form-field color="primary" appearance="outline">
-    <mat-label>Contraseña</mat-label>
-    <input
-      placeholder="Contraseña"
-      formControlName="password"
-      matInput
-      placeholder="Contraseña"
-      [type]="hide ? 'password' : 'text'"
-    />
-    <button
-      type="button"
-      mat-icon-button
-      matSuffix
-      (click)="hide = !hide"
-      [attr.aria-label]="'Ocultar clave'"
-      [attr.aria-pressed]="hide"
-    >
-      <mat-icon
-        [svgIcon]="hide ? 'visibility_off' : 'visibility'"
-      ></mat-icon></button
-    ><mat-error>
-      {{ loginForm.get("password")?.errors | validatorErrorMessage }}
-    </mat-error>
-  </mat-form-field>
-
-  <div *ngIf="btnProcesar" class="spinner">
-    <mat-spinner class="spinner" diameter="35"></mat-spinner>
+<div class="login" [ngClass]="animationBack ? 'back-animation' : ''">
+  <div class="back">
+    <button mat-icon-button (click)="backTo()">
+      <mat-icon svgIcon="arrow_back_ios"></mat-icon>
+    </button>
   </div>
+  <form (ngSubmit)="login()" [formGroup]="loginForm">
+    <mat-form-field color="primary" appearance="outline">
+      <mat-label>Email</mat-label>
+      <input
+        placeholder="Email"
+        type="email"
+        formControlName="email"
+        name="email"
+        matInput
+        autofocus
+        required
+      />
+      <mat-error>
+        {{ loginForm.get("email")?.errors | validatorErrorMessage }}
+      </mat-error>
+    </mat-form-field>
 
-  <div class="btnIngresar">
-    <button mat-button type="submit" *ngIf="!btnProcesar">Ingresar</button>
-  </div>
-</form>
+    <mat-form-field color="primary" appearance="outline">
+      <mat-label>Contraseña</mat-label>
+      <input
+        placeholder="Contraseña"
+        formControlName="password"
+        matInput
+        placeholder="Contraseña"
+        [type]="hide ? 'password' : 'text'"
+      />
+      <button
+        type="button"
+        mat-icon-button
+        matSuffix
+        (click)="hide = !hide"
+        [attr.aria-label]="'Ocultar clave'"
+        [attr.aria-pressed]="hide"
+      >
+        <mat-icon
+          [svgIcon]="hide ? 'visibility_off' : 'visibility'"
+        ></mat-icon></button
+      ><mat-error>
+        {{ loginForm.get("password")?.errors | validatorErrorMessage }}
+      </mat-error>
+    </mat-form-field>
+
+    <div *ngIf="btnProcesar" class="spinner">
+      <mat-spinner class="spinner" diameter="35"></mat-spinner>
+    </div>
+
+    <div class="btnIngresar">
+      <button mat-button type="submit" *ngIf="!btnProcesar">Ingresar</button>
+    </div>
+  </form>
+</div>
