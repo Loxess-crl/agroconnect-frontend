@@ -6,10 +6,15 @@ import { LoginComponent } from './pages/auth/login/login.component';
 import { RegisterComponent } from './pages/auth/register/register.component';
 import { checkLoginGuard } from './core/guards/check-login.guard';
 import { userVerifyGuard } from './core/guards/user-verify.guard';
+import { UserComponent } from './pages/user/user.component';
+import { UserHomeComponent } from './pages/user/user-home/user-home.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { CartComponent } from './pages/user/cart/cart.component';
+import { ExploreComponent } from './pages/user/explore/explore.component';
 
 export const routes: Routes = [
   {
-    path: APP_ROUTES.HOME,
+    path: '',
     loadComponent() {
       return HomeComponent;
     },
@@ -32,6 +37,40 @@ export const routes: Routes = [
       },
     ],
   },
+  {
+    path: APP_ROUTES.USER,
+    component: UserComponent,
+    children: [
+      {
+        path: '',
+        redirectTo: APP_ROUTES.HOME,
+      },
+      {
+        path: APP_ROUTES.HOME,
+        loadComponent() {
+          return UserHomeComponent;
+        },
+      },
+      {
+        path: APP_ROUTES.EXPLORE,
+        loadComponent() {
+          return ExploreComponent;
+        },
+      },
+      {
+        path: APP_ROUTES.CART,
+        loadComponent() {
+          return CartComponent;
+        },
+      },
+      {
+        path: APP_ROUTES.PROFILE,
+        loadComponent() {
+          return ProfileComponent;
+        },
+      },
+    ],
+  },
   //   {
   //     path: APP_ROUTES.VERIFICAR,
   //     loadComponent() {
@@ -40,6 +79,6 @@ export const routes: Routes = [
   //   },
   {
     path: '**',
-    redirectTo: APP_ROUTES.HOME,
+    redirectTo: '',
   },
 ];

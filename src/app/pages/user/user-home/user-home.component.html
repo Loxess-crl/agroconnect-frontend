@@ -1,0 +1,48 @@
+<div class="home">
+  <section class="header">
+    <div class="greet">
+      <span>Bienvenido de vuelta,</span>
+      <span class="username">
+        <strong>{{ userName }}</strong></span
+      >
+    </div>
+    <div class="search">
+      <button mat-icon-button><mat-icon svgIcon="search"></mat-icon></button>
+    </div>
+  </section>
+  <section class="featured">
+    <div class="title">
+      <span>Recomendados</span>
+    </div>
+    <div class="featured-list">
+      @for (featuredImage of featured_images; track $index) {
+      <div class="featured-image">
+        <img [src]="featuredImage" alt="Featured image" />
+      </div>
+      }
+    </div>
+  </section>
+  <section class="categories">
+    <div class="title">
+      <span>Categorías</span>
+    </div>
+    <div class="category-list">
+      @for (category of categories; track $index) {
+      <div class="category">
+        <span>{{ category }}</span>
+      </div>
+      }
+    </div>
+  </section>
+
+  <section class="new-arrivals">
+    <div class="title">
+      <span>Nuevos lanzamientos</span>
+    </div>
+    <div class="new-arrivals-list">
+      @for (newArrival of new_arrivals; track $index) {
+      <app-card-product [product]="newArrival"></app-card-product>
+      }
+    </div>
+  </section>
+</div>

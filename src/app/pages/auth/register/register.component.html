@@ -1,1 +1,67 @@
-<p>register works!</p>
+<div class="login" [ngClass]="animationBack ? 'back-animation' : ''">
+  <div class="back">
+    <button mat-icon-button (click)="backTo()">
+      <mat-icon svgIcon="arrow_back_ios"></mat-icon>
+    </button>
+  </div>
+  <div class="content">
+    <div class="title">
+      <h1>Regístrate</h1>
+    </div>
+    <div class="form">
+      <form (ngSubmit)="login()" [formGroup]="loginForm">
+        <mat-form-field color="primary" appearance="outline">
+          <mat-label>Email</mat-label>
+          <input
+            placeholder="Email"
+            type="email"
+            formControlName="email"
+            name="email"
+            matInput
+            autofocus
+            required
+          />
+          <mat-error>
+            {{ loginForm.get("email")?.errors | validatorErrorMessage }}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field color="primary" appearance="outline">
+          <mat-label>Contraseña</mat-label>
+          <input
+            placeholder="Contraseña"
+            formControlName="password"
+            matInput
+            placeholder="Contraseña"
+            [type]="hide ? 'password' : 'text'"
+          />
+          <button
+            type="button"
+            mat-icon-button
+            matSuffix
+            (click)="hide = !hide"
+            [attr.aria-label]="'Ocultar clave'"
+            [attr.aria-pressed]="hide"
+          >
+            <mat-icon
+              [svgIcon]="hide ? 'visibility_off' : 'visibility'"
+            ></mat-icon></button
+          ><mat-error>
+            {{ loginForm.get("password")?.errors | validatorErrorMessage }}
+          </mat-error>
+        </mat-form-field>
+
+        @if(!btnProcesar){
+
+        <div class="btnIngresar">
+          <button mat-button type="submit" *ngIf="!btnProcesar">
+            Registrarse
+          </button>
+        </div>
+        } @else {
+        <mat-spinner class="spinner" diameter="35"></mat-spinner>
+        }
+      </form>
+    </div>
+  </div>
+</div>

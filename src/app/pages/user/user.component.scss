@@ -1,0 +1,5 @@
+@use "../../../assets/styles/app-colors.scss" as ac;
+.user {
+  height: 100vh;
+  background-color: ac.$background-color;
+}

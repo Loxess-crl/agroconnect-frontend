@@ -1,0 +1,29 @@
+<div class="product-card">
+  <div class="favorite">
+    <button mat-icon-button (click)="toggleFavorite()">
+      <mat-icon
+        [class.active]="product.favorite"
+        [svgIcon]="product.favorite ? 'favorite_filled' : 'favorite'"
+      ></mat-icon>
+    </button>
+  </div>
+  <div class="product-image">
+    <img [src]="product.image" [alt]="product.name" />
+  </div>
+  <div class="product-info">
+    <div class="store">
+      <span>{{ product.store }}</span>
+    </div>
+    <div class="product-name">
+      <span>{{ product.name }}</span>
+    </div>
+    <div class="product-footer">
+      <span>{{ product.price | currency : "S/. " }}</span>
+      <button mat-icon-button (click)="toggleAdded()">
+        <mat-icon
+          [svgIcon]="product.added ? 'task_alt' : 'add_circle'"
+        ></mat-icon>
+      </button>
+    </div>
+  </div>
+</div>

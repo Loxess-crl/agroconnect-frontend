@@ -11,7 +11,14 @@ import {
 import { firstValueFrom } from 'rxjs';
 import { IUser } from '../interfaces/user.interface';
 
-export type LocalStorageKey = 'ID' | 'NAME' | 'AP' | 'AM' | 'EMAIL' | 'ROL';
+export type LocalStorageKey =
+  | 'ID'
+  | 'NAME'
+  | 'AP'
+  | 'AM'
+  | 'EMAIL'
+  | 'ROL'
+  | 'CART';
 
 @Injectable({
   providedIn: 'root',

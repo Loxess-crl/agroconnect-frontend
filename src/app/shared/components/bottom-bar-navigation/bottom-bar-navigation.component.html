@@ -1,0 +1,23 @@
+<footer>
+  <div class="toolbarNav">
+    @for(element of navigationElements; let i = $index ;track i){
+
+    <div
+      mat-button
+      (click)="onElementNavigationClick(element)"
+      class="element"
+      [class.active]="element.isActive"
+    >
+      <mat-icon
+        class="icon"
+        mat-card-image
+        [svgIcon]="element.icon"
+        fontSet="material-symbols-rounded"
+        [matBadge]="element.badge"
+        [matBadgeHidden]="element.badge === 0"
+      ></mat-icon>
+      <span>{{ element.name }}</span>
+    </div>
+    }
+  </div>
+</footer>

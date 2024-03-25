@@ -16,6 +16,7 @@ import { Router } from '@angular/router';
 import { ValidatorErrorMessagePipe } from '../../../shared/pipes/validator-error-message.pipe';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { APP_ROUTES } from '../../../core/enums/routes.enum';
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -45,7 +46,7 @@ export class LoginComponent {
     private authService: AuthService,
     // private firebaseAuth: FirebaseAuthenticationService,
     private _snackBar: MatSnackBar,
-    private _router: Router
+    private router: Router
   ) {
     this.msgEstado = '';
     this.btnProcesar = false;
@@ -66,16 +67,20 @@ export class LoginComponent {
 
   login() {
     this.btnProcesar = true;
-    this.authService.login(this.loginForm.value).then(
-      (res) => {
-        this._router.navigate(['/home']);
-      },
-      (error) => {
-        this._snackBar.open('Error al iniciar sesión', 'Cerrar', {
-          duration: 2000,
-        });
-        this.btnProcesar = false;
-      }
-    );
+    this.authService.setItem('NAME', 'Mamaguevo');
+    setTimeout(() => {
+      this.router.navigateByUrl(APP_ROUTES.USER);
+    }, 2000);
+    // this.authService.login(this.loginForm.value).then(
+    //   (res) => {
+    //     this._router.navigate(['/home']);
+    //   },
+    //   (error) => {
+    //     this._snackBar.open('Error al iniciar sesión', 'Cerrar', {
+    //       duration: 2000,
+    //     });
+    //     this.btnProcesar = false;
+    //   }
+    // );
   }
 }
