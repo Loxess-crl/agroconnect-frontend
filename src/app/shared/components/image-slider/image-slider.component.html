@@ -1,0 +1,19 @@
+<div class="container-banner">
+  <swiper-container appSwiper #swiper [config]="swiperConfig" init="false">
+    @for (image of images; track $index) {
+    <swiper-slide>
+      <img [src]="image" alt="publicity-content" />
+    </swiper-slide>
+    }
+  </swiper-container>
+
+  <div class="dot-container">
+    @for (dot of images; track $index) {
+    <div
+      class="dot"
+      [class.active]="currentImage === $index"
+      (click)="slideTo($index)"
+    ></div>
+    }
+  </div>
+</div>

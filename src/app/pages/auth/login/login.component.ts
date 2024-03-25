@@ -17,6 +17,7 @@ import { ValidatorErrorMessagePipe } from '../../../shared/pipes/validator-error
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { APP_ROUTES } from '../../../core/enums/routes.enum';
+import { ButtonBackComponent } from '../../../shared/components/button-back/button-back.component';
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -30,6 +31,7 @@ import { APP_ROUTES } from '../../../core/enums/routes.enum';
     ValidatorErrorMessagePipe,
     MatIconModule,
     MatProgressSpinnerModule,
+    ButtonBackComponent,
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',

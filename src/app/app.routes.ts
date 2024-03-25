@@ -11,6 +11,7 @@ import { UserHomeComponent } from './pages/user/user-home/user-home.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { CartComponent } from './pages/user/cart/cart.component';
 import { ExploreComponent } from './pages/user/explore/explore.component';
+import { ProductComponent } from './pages/product/product.component';
 
 export const routes: Routes = [
   {
@@ -70,6 +71,12 @@ export const routes: Routes = [
         },
       },
     ],
+  },
+  {
+    path: `${APP_ROUTES.PRODUCT}/:id`,
+    loadComponent() {
+      return ProductComponent;
+    },
   },
   //   {
   //     path: APP_ROUTES.VERIFICAR,

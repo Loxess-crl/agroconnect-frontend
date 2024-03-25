@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { AuthService } from '../../../core/services/auth.service';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { categories, featured, new_arrivals } from './mocks/user-home.mocks';
+import { categories, featured, products } from './mocks/user-home.mocks';
 import { CardProductComponent } from '../../../shared/components/card-product/card-product.component';
 
 @Component({
@@ -16,7 +16,7 @@ export class UserHomeComponent {
   public userName: string;
   public featured_images = featured;
   public categories = categories;
-  public new_arrivals = new_arrivals;
+  public new_arrivals = products;
   constructor(private authService: AuthService) {
     this.userName = this.authService.getItem('NAME') ?? 'Usuario';
   }

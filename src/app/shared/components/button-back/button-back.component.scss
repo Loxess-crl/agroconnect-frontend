@@ -1,0 +1,8 @@
+@use "../../../../assets/styles/app-palettes.scss" as ap;
+.back-button {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  color: map-get(ap.$primary-palette, 900);
+  font-size: 1.2rem;
+}

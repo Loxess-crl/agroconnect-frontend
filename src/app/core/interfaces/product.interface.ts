@@ -3,10 +3,14 @@ export interface IProduct {
   name: string;
   description: string;
   price: number;
-  image: string;
+  discount?: number;
+  new_price?: number;
+  images: string[];
   category: string;
   stock: number;
   store: string;
-  favorite?: boolean;
+  isFavorite?: boolean;
+  rate?: number;
+  reviews?: number;
   added?: boolean;
 }

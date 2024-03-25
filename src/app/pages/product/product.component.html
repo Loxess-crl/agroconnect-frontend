@@ -1,0 +1,84 @@
+<div class="product">
+  <section class="header">
+    <div class="button-back">
+      <app-button-back route="back" />
+    </div>
+    <div class="cart">
+      <button mat-icon-button (click)="goToCart()">
+        <mat-icon svgIcon="shopping_cart" [matBadge]="cartNumber"></mat-icon>
+      </button>
+    </div>
+  </section>
+  <div class="image-slider">
+    <app-image-slider [images]="product.images" />
+  </div>
+  <section class="product-info">
+    <div class="main-info">
+      <div class="product-store">
+        <span>{{ product.store }}</span>
+      </div>
+      <div class="product-name">
+        <span>{{ product.name }}</span>
+      </div>
+      <div class="product-rate">
+        <mat-icon svgIcon="star_filled" color="accent"></mat-icon>
+        {{ product.rate }}
+        <span class="reviews">({{ product.reviews }} reseñas)</span>
+      </div>
+      <div class="price">
+        @if (product.discount) {
+        <div class="product-price">
+          <span>{{ product.new_price | currency }}</span>
+        </div>
+        }
+        <div class="product-price" [class.tacched]="product.discount">
+          <span>{{ product.price | currency : "S/. " }}</span>
+        </div>
+        @if (product.discount) {
+        <div class="product-discount">
+          <span> -{{ product.discount }}%</span>
+        </div>
+        }
+      </div>
+    </div>
+    <div class="features">
+      <div class="feature stock">
+        <mat-icon svgIcon="inventory_two" />
+        <span>{{ product.stock }} en stock</span>
+      </div>
+      <div class="feature delivery">
+        <mat-icon svgIcon="local_shipping" />
+        <span>Entrega en 24 horas</span>
+      </div>
+      <div class="feature available">
+        <mat-icon svgIcon="storefront" />
+        <span>Disponible en tienda</span>
+      </div>
+    </div>
+    <div class="description">
+      <span>{{ product.description }}</span>
+    </div>
+  </section>
+  <div class="footer">
+    <div
+      class="add-favorite"
+      matRipple
+      matRippleColor="accent"
+      (click)="onFavoriteChange()"
+    >
+      <mat-icon
+        [svgIcon]="product.isFavorite ? 'favorite_filled' : 'favorite'"
+        color="accent"
+      ></mat-icon>
+    </div>
+    <div
+      class="add-to-cart"
+      (click)="onChangeAddCart()"
+      [class.added]="product.added"
+    >
+      <button matRipple>
+        {{ product.added ? "Quitar del carrito" : "Añadir al carrito" }}
+      </button>
+    </div>
+  </div>
+</div>

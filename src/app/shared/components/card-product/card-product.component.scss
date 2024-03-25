@@ -50,14 +50,15 @@
       font-weight: 600;
       color: ac.$on-background-color;
     }
-    .product-footer {
-      padding-left: 0.5rem;
-      background-color: map-get(ap.$primary-palette, 50);
-      display: flex;
-      border-radius: 20px;
-      justify-content: space-between;
-      align-items: center;
-      color: ac.$primary-color;
-    }
+  }
+  .product-footer {
+    margin-inline: 0.5rem;
+    padding-left: 0.5rem;
+    background-color: map-get(ap.$primary-palette, 50);
+    display: flex;
+    border-radius: 20px;
+    justify-content: space-between;
+    align-items: center;
+    color: ac.$primary-color;
   }
 }

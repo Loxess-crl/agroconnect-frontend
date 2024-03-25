@@ -1,0 +1,137 @@
+@use "../../../assets/styles/app-colors.scss" as ac;
+@use "../../../assets/styles/app-palettes.scss" as ap;
+.product {
+  height: 100vh;
+  position: relative;
+  .header {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+  }
+  .image-slider {
+    max-height: 50%;
+  }
+
+  .product-info {
+    padding: 1rem;
+    .main-info {
+      display: flex;
+      flex-direction: column;
+
+      .product-store {
+        text-transform: uppercase;
+        color: map-get(ap.$primary-palette, 200);
+        font-size: 1.1rem;
+      }
+      .product-name {
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+
+      .product-rate {
+        display: flex;
+        gap: 0.25rem;
+        align-items: center;
+        font-size: 0.9rem;
+        .mat-icon {
+          height: 1.2rem;
+          width: 1.2rem;
+        }
+      }
+      .price {
+        display: flex;
+        gap: 1rem;
+        margin-block: 0.75rem;
+        align-items: center;
+        font-size: 1.4rem;
+        .product-price {
+          font-weight: bold;
+          color: map-get(ap.$primary-palette, 500);
+          &.tacched {
+            text-decoration: line-through;
+            font-weight: normal;
+            color: map-get(ap.$primary-palette, 200);
+          }
+        }
+
+        .product-discount {
+          padding: 0.25rem;
+          color: map-get(ap.$secondary-palette, 300);
+          font-size: 0.9rem;
+          font-weight: bold;
+          border-radius: 5px;
+          padding-inline: 0.5rem;
+          background-color: map-get(ap.$secondary-palette, 50);
+        }
+      }
+    }
+  }
+
+  .features {
+    padding-block: 1rem;
+    font-size: 0.9rem;
+    .feature {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+      color: map-get(ap.$primary-palette, 200);
+      &.stock {
+        color: ac.$secondary-color;
+      }
+      .mat-icon {
+        color: ac.$secondary-color;
+      }
+    }
+  }
+
+  .description {
+    padding-block: 1rem;
+    font-size: 0.9rem;
+    color: map-get(ap.$primary-palette, 200);
+  }
+
+  .footer {
+    position: absolute;
+    bottom: 5%;
+    width: 92%;
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem;
+    .add-favorite {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      color: map-get(ap.$primary-palette, 500);
+      border-radius: 10px;
+      border: map-get(ap.$primary-palette, 200) 1px solid;
+      padding: 1rem 1.2rem;
+      .mat-icon {
+        font-size: 1.5rem;
+      }
+    }
+    .add-to-cart {
+      padding: 0.5rem 1rem;
+      width: 70%;
+      button {
+        border: none;
+        background-color: map-get(ap.$secondary-palette, 200);
+        color: map-get(ap.$secondary-palette, 800);
+        font-weight: bold;
+        border-radius: 15px;
+        padding-block: 1rem;
+        width: 100%;
+
+        &:hover {
+          background-color: map-get(ap.$secondary-palette, 300);
+        }
+      }
+      &.added {
+        button {
+          background-color: map-get(ap.$secondary-palette, 50);
+          border: map-get(ap.$secondary-palette, 200) 1px solid;
+        }
+      }
+    }
+  }
+}

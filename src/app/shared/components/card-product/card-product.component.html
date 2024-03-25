@@ -2,28 +2,28 @@
   <div class="favorite">
     <button mat-icon-button (click)="toggleFavorite()">
       <mat-icon
-        [class.active]="product.favorite"
-        [svgIcon]="product.favorite ? 'favorite_filled' : 'favorite'"
+        [class.active]="product.isFavorite"
+        [svgIcon]="product.isFavorite ? 'favorite_filled' : 'favorite'"
       ></mat-icon>
     </button>
   </div>
-  <div class="product-image">
-    <img [src]="product.image" [alt]="product.name" />
+  <div class="product-image" matRipple (click)="goToProduct()">
+    <img [src]="product.images[0]" [alt]="product.name" />
   </div>
-  <div class="product-info">
+  <div class="product-info" (click)="goToProduct()">
     <div class="store">
       <span>{{ product.store }}</span>
     </div>
     <div class="product-name">
       <span>{{ product.name }}</span>
     </div>
-    <div class="product-footer">
-      <span>{{ product.price | currency : "S/. " }}</span>
-      <button mat-icon-button (click)="toggleAdded()">
-        <mat-icon
-          [svgIcon]="product.added ? 'task_alt' : 'add_circle'"
-        ></mat-icon>
-      </button>
-    </div>
+  </div>
+  <div class="product-footer">
+    <span>{{ product.price | currency : "S/. " }}</span>
+    <button mat-icon-button (click)="toggleAdded()">
+      <mat-icon
+        [svgIcon]="product.added ? 'task_alt' : 'add_circle'"
+      ></mat-icon>
+    </button>
   </div>
 </div>

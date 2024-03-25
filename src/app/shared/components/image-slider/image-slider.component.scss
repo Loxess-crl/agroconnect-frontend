@@ -1,0 +1,44 @@
+@use "../../../../assets/styles/app-palettes.scss" as ap;
+.container-banner {
+  position: relative;
+  // padding-block: 0.3rem;
+  height: 100%;
+  swiper-slide {
+    height: 45%;
+    display: flex;
+    background-color: #ccc;
+    justify-content: center;
+    align-items: center;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  swiper-container {
+    margin-bottom: 1rem;
+  }
+}
+
+.dot-container {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+
+  .dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background-color: map-get(ap.$primary-palette, 100);
+    margin: 0 0.2rem;
+    transition: background-color 0.3s ease-in-out;
+
+    &.active {
+      background-color: map-get(ap.$primary-palette, 500);
+    }
+  }
+}

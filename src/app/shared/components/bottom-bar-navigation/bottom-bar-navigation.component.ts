@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
@@ -26,11 +26,7 @@ import { AuthService } from '../../../core/services/auth.service';
 export class BottomBarNavigationComponent {
   public navigationElements = navigationElements;
 
-  constructor(
-    private router: Router,
-    private authService: AuthService,
-    private cd: ChangeDetectorRef
-  ) {
+  constructor(private router: Router, private authService: AuthService) {
     const currentRoute = this.navigationElements.find(
       (element) => element.link === window.location.pathname.split('/').at(-1)
     );

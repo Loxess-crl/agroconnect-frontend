@@ -9,4 +9,6 @@ export enum APP_ROUTES {
   PROFILE = 'profile',
   CART = 'cart',
   EXPLORE = 'explore',
+
+  PRODUCT = 'product',
 }

@@ -61,6 +61,11 @@
         border-radius: 1rem;
         border: ac.$primary-color 0.1px solid;
         transition: all 0.3s;
+
+        &:hover {
+          background-color: ac.$primary-color;
+          color: ac.$white-opacity-color;
+        }
       }
     }
   }
