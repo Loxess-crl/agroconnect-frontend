@@ -36,3 +36,10 @@ export const navigationElements: INavigationElement[] = [
     show: false,
   },
 ];
+
+export const syncBadge = (name: string, badge: number) => {
+  const element = navigationElements.find((element) => element.name === name);
+  if (element) {
+    element.badge = badge;
+  }
+};

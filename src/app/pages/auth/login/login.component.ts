@@ -69,7 +69,8 @@ export class LoginComponent {
 
   login() {
     this.btnProcesar = true;
-    this.authService.setItem('NAME', 'Mamaguevo');
+    this.authService.setItem('NAME', 'Usuario');
+    this.authService.setItem('LOGGED', 1);
     setTimeout(() => {
       this.router.navigateByUrl(APP_ROUTES.USER);
     }, 2000);

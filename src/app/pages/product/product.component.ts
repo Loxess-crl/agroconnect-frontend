@@ -11,6 +11,7 @@ import { APP_ROUTES } from '../../core/enums/routes.enum';
 import { ImageSliderComponent } from '../../shared/components/image-slider/image-slider.component';
 import { CurrencyPipe } from '@angular/common';
 import { MatRipple } from '@angular/material/core';
+import { CartService } from '../../core/services/cart.service';
 
 @Component({
   selector: 'app-product',
@@ -35,6 +36,7 @@ export class ProductComponent {
 
   constructor(
     private authService: AuthService,
+    private cartService: CartService,
     private activatedRoute: ActivatedRoute,
     private router: Router
   ) {
@@ -67,9 +69,11 @@ export class ProductComponent {
     if (this.product.added) {
       this.cartNumber--;
       this.authService.setItem('CART', this.cartNumber.toString());
+      this.cartService.removeCartItemID(this.product.id);
     } else {
       this.cartNumber++;
       this.authService.setItem('CART', this.cartNumber.toString());
+      this.cartService.setCartItemID(this.product.id);
     }
     this.product.added = !this.product.added;
   }

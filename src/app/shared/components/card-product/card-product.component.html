@@ -19,7 +19,7 @@
     </div>
   </div>
   <div class="product-footer">
-    <span>{{ product.price | currency : "S/. " }}</span>
+    <span>{{ product.new_price ?? product.price | currency : "S/. " }}</span>
     <button mat-icon-button (click)="toggleAdded()">
       <mat-icon
         [svgIcon]="product.added ? 'task_alt' : 'add_circle'"

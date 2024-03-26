@@ -3,12 +3,16 @@ import { Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
-import { navigationElements } from '../../../core/constants/navigation-elements.constant';
+import {
+  navigationElements,
+  syncBadge,
+} from '../../../core/constants/navigation-elements.constant';
 import { Router } from '@angular/router';
 import { INavigationElement } from '../../../core/interfaces/navigation.interface';
 import { APP_ROUTES } from '../../../core/enums/routes.enum';
 import { MatBadgeModule } from '@angular/material/badge';
 import { AuthService } from '../../../core/services/auth.service';
+import { CartService } from '../../../core/services/cart.service';
 
 @Component({
   selector: 'app-bottom-bar-navigation',
@@ -26,7 +30,11 @@ import { AuthService } from '../../../core/services/auth.service';
 export class BottomBarNavigationComponent {
   public navigationElements = navigationElements;
 
-  constructor(private router: Router, private authService: AuthService) {
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    private cartService: CartService
+  ) {
     const currentRoute = this.navigationElements.find(
       (element) => element.link === window.location.pathname.split('/').at(-1)
     );
@@ -37,6 +45,8 @@ export class BottomBarNavigationComponent {
   }
 
   ngOnInit() {
+    const cartNumber = this.cartService.getCartItemsID().length;
+    syncBadge('Cart', cartNumber);
     window.addEventListener('storage', (event) => {
       const cartItem = navigationElements.find(
         (element) => element.link === APP_ROUTES.CART

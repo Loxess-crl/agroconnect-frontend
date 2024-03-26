@@ -1,1 +1,68 @@
-<span>CART cuando lo termine xd</span>
+<div class="shopping-cart">
+  <section class="header">
+    <div class="button-back">
+      <app-button-back route="back" />
+    </div>
+    <div class="title"><span>Carrito de compras</span></div>
+  </section>
+
+  <section class="products">
+    @for (product of cartElements; track $index) {
+    <div class="product-cart">
+      <div class="remove-product">
+        <button mat-icon-button (click)="removeProduct(product.id)">
+          <mat-icon svgIcon="close" color="warn"></mat-icon>
+        </button>
+      </div>
+      <div class="product-image">
+        <img [src]="product.images[0]" [alt]="product.name" />
+      </div>
+      <div class="product-info">
+        <div class="product-title">
+          <span>{{ product.name }}</span>
+        </div>
+        <div class="product-action">
+          <div class="product-price">
+            @if (product.discount) {
+            <div class="product-price-tacched">
+              <span>{{
+                product.price * product.quantity | currency : "S/. "
+              }}</span>
+            </div>
+            }
+            <span>{{ product.total_price | currency : "S/. " }}</span>
+          </div>
+          <div class="product-quantity">
+            <button mat-icon-button (click)="increaseQuantity(product)">
+              <mat-icon svgIcon="add"></mat-icon>
+            </button>
+            <span>{{ product.quantity }}</span>
+            <button mat-icon-button (click)="decreaseQuantity(product)">
+              <mat-icon svgIcon="remove"></mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    } @empty {
+    <div class="empty-cart">
+      <h1>No hay productos agregados!</h1>
+      <p>Agrega productos al carrito para empezar</p>
+    </div>
+    }
+  </section>
+  @if (cartElements.length > 0) {
+
+  <section class="buy-action">
+    <div class="total">
+      <div class="total-title"><span>Total:</span></div>
+      <div class="total-price">
+        <span>{{ totalCartPrice | currency : "S/. " }}</span>
+      </div>
+    </div>
+    <div class="button-buy">
+      <button mat-button>Comprar</button>
+    </div>
+  </section>
+  }
+</div>

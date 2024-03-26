@@ -18,6 +18,7 @@ export type LocalStorageKey =
   | 'AM'
   | 'EMAIL'
   | 'ROL'
+  | 'LOGGED'
   | 'CART';
 
 @Injectable({
