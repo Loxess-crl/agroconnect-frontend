@@ -70,12 +70,13 @@ export class ProductComponent {
       this.cartNumber--;
       this.authService.setItem('CART', this.cartNumber.toString());
       this.cartService.removeCartItemID(this.product.id);
+      this.product.added = false;
     } else {
       this.cartNumber++;
       this.authService.setItem('CART', this.cartNumber.toString());
       this.cartService.setCartItemID(this.product.id);
+      this.product.added = true;
     }
-    this.product.added = !this.product.added;
   }
   goToCart() {
     this.router.navigate([APP_ROUTES.USER, APP_ROUTES.CART]);

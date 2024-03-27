@@ -6,6 +6,10 @@ import { products } from '../user-home/mocks/user-home.mocks';
 import { ButtonBackComponent } from '../../../shared/components/button-back/button-back.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { AuthService } from '../../../core/services/auth.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmPurchaseComponent } from './confirm-purchase/confirm-purchase.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 interface IProductCart extends IProduct {
   quantity: number;
@@ -22,7 +26,12 @@ export class CartComponent {
   public cartElements: IProductCart[];
   public totalCartPrice: number = 0;
 
-  constructor(private cartService: CartService) {
+  constructor(
+    private cartService: CartService,
+    private authService: AuthService,
+    private dialog: MatDialog,
+    private snackBar: MatSnackBar
+  ) {
     const itemsID = this.cartService.getCartItemsID();
     this.cartElements = products
       .filter((product) => itemsID.includes(product.id.toString()))
@@ -65,5 +74,34 @@ export class CartComponent {
       (product) => product.id !== productID
     );
     this.calculateTotalCartPrice();
+    const cart = Number(this.authService.getItem('CART') ?? 0);
+    this.authService.setItem('CART', cart - 1);
+    window.dispatchEvent(new Event('storage'));
+  }
+
+  confirmPurchase() {
+    this.dialog
+      .open(ConfirmPurchaseComponent, {
+        data: {
+          totalCartPrice: this.totalCartPrice,
+        },
+      })
+      .afterClosed()
+      .subscribe((result) => {
+        if (result) {
+          this.cartElements = [];
+          this.calculateTotalCartPrice();
+          this.cartService.clearCart();
+          this.authService.setItem('CART', 0);
+          window.dispatchEvent(new Event('storage'));
+          this.snackBar.open('Compra realizada con éxito', 'Cerrar', {
+            duration: 2000,
+          });
+        } else {
+          this.snackBar.open('Compra cancelada', 'Cerrar', {
+            duration: 2000,
+          });
+        }
+      });
   }
 }

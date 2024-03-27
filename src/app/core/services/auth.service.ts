@@ -166,22 +166,24 @@ export class AuthService {
   }
 
   public async logout() {
-    if (!this.authError) {
-      await firstValueFrom(
-        this.http.post(`/auth/logout`, {
-          headers: this.cabeceras,
-        })
-      );
-    }
-    const url = this.getUrl();
-    if (url) {
-      localStorage.clear();
-      this.setUrl(url);
-    } else {
-      this.checkUrl(true);
-    }
+    // if (!this.authError) {
+    //   await firstValueFrom(
+    //     this.http.post(`/auth/logout`, {
+    //       headers: this.cabeceras,
+    //     })
+    //   );
+    // }
+    // const url = this.getUrl();
+    // if (url) {
+    //   localStorage.clear();
+    //   this.setUrl(url);
+    // } else {
+    //   this.checkUrl(true);
+    // }
     // this.firebaseAuthService.logOut();
-    this.router.navigate(['/auth/login']);
+    // this.router.navigate(['/auth/login']);
+    localStorage.removeItem('LOGGED');
+    this.router.navigate(['/']);
   }
 
   public refreshToken() {

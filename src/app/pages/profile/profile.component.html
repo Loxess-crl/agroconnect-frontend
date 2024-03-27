@@ -1,1 +1,19 @@
-<span>Perfil cuando si</span>
+<div class="perfil">
+  <div class="user-name"><span>Usuario</span></div>
+  @if(isLoading){
+  <div class="spinner">
+    <mat-progress-spinner
+      mode="indeterminate"
+      diameter="35"
+      strokeWidth="3"
+    ></mat-progress-spinner>
+  </div>
+  } @else {
+
+  <div class="logout">
+    <button (click)="onClickLogout()" mat-raised-button color="warn">
+      Cerrar Sesión
+    </button>
+  </div>
+  }
+</div>

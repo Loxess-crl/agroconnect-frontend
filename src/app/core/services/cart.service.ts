@@ -30,4 +30,8 @@ export class CartService {
         .filter((prod) => prod !== '') || []
     );
   }
+
+  clearCart() {
+    localStorage.removeItem('cart_items');
+  }
 }
